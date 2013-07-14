@@ -80,7 +80,7 @@ public class SerialPortFacade {
      * Closes the connection of the connected {@link gnu.io.SerialPort}.
      */
     public void close() {
-        serialPort.close();
+        this.serialPort.close();
     }
 
     /**
