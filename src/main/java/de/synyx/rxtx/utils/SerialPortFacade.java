@@ -51,6 +51,7 @@ public class SerialPortFacade {
      * @throws NoSuchPortException
      */
     public void open() throws UnsupportedCommOperationException, PortInUseException, UnsupportedPortException, NoSuchPortException {
+        LOG.info("opening connection to serialPort " + this.serialPort);
 
         CommPortIdentifier commPortIdentifier = CommPortIdentifier.getPortIdentifier(portName);
 
@@ -65,9 +66,17 @@ public class SerialPortFacade {
 
         this.serialPort = (SerialPort) commPortIdentifier.open(portName, 2000);
         applySerialPortParams();
+
+        LOG.info("connection is established to serialPort " + this.serialPort.getName());
     }
 
     private void applySerialPortParams() throws UnsupportedCommOperationException {
+        LOG.info("applying serialPort configuration:"
+                +" baud rate: " + this.serialPortParams.getBaudRate()
+                +" data bits: " + this.serialPortParams.getDataBits()
+                +" stop bits: " + this.serialPortParams.getStopBits()
+                +" parity: " + this.serialPortParams.getParity());
+
         this.serialPort.setSerialPortParams(
                 this.serialPortParams.getBaudRate(),
                 this.serialPortParams.getDataBits(),
@@ -80,7 +89,9 @@ public class SerialPortFacade {
      * Closes the connection of the connected {@link gnu.io.SerialPort}.
      */
     public void close() {
+        LOG.info("closing connection to serialPort " + this.serialPort.getName());
         this.serialPort.close();
+        LOG.info("connection is closed to serialPort" + this.portName);
     }
 
     /**
@@ -91,7 +102,9 @@ public class SerialPortFacade {
      * @throws TooManyListenersException
      */
     public void registerEventlistener(SerialPortEventListener serialPortEventListener) throws TooManyListenersException {
+        LOG.info("registering serialPortEventListener");
         this.serialPort.addEventListener(serialPortEventListener);
+        LOG.info("enabling notify on data available");
         this.serialPort.notifyOnDataAvailable(true);
     }
 
