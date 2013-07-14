@@ -26,14 +26,7 @@ public class SerialPortFacade {
     }
 
     public SerialPortFacade(String portName) {
-        this(portName,
-                new SerialPortParams(
-                        SerialPortParams.BaudRate.BAUD9600,
-                        SerialPortParams.DataBits.DATA8,
-                        SerialPortParams.StopBits.ONE,
-                        SerialPortParams.Parity.NONE
-                )
-        );
+        this(portName, new SerialPortParams());
     }
 
     public void open() throws UnsupportedCommOperationException, PortInUseException, UnsupportedPortException, NoSuchPortException {
