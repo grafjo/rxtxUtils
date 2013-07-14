@@ -11,6 +11,13 @@ public class SerialPortParams {
     private StopBits stopBits;
     private Parity parity;
 
+    public SerialPortParams() {
+        this.baudRate = BaudRate.BAUD9600;
+        this.dataBits = DataBits.DATA8;
+        this.stopBits = StopBits.ONE;
+        this.parity = Parity.NONE;
+    }
+
     public SerialPortParams(BaudRate baudRate, DataBits dataBits, StopBits stopBits, Parity parity) {
         this.baudRate = baudRate;
         this.dataBits = dataBits;
