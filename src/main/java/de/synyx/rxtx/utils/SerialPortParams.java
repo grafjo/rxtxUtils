@@ -11,6 +11,9 @@ public class SerialPortParams {
     private StopBits stopBits;
     private Parity parity;
 
+    /**
+     * Constructs default configuration object with BaudRate.BAUD9600, DataBits.DATA8, StopBits.ONE, Parity.NONE;
+     */
     public SerialPortParams() {
         this.baudRate = BaudRate.BAUD9600;
         this.dataBits = DataBits.DATA8;
@@ -18,6 +21,14 @@ public class SerialPortParams {
         this.parity = Parity.NONE;
     }
 
+    /**
+     * Constructs a custom configuration object.
+     *
+     * @param baudRate
+     * @param dataBits
+     * @param stopBits
+     * @param parity
+     */
     public SerialPortParams(BaudRate baudRate, DataBits dataBits, StopBits stopBits, Parity parity) {
         this.baudRate = baudRate;
         this.dataBits = dataBits;
@@ -41,6 +52,9 @@ public class SerialPortParams {
         return this.stopBits.getValue();
     }
 
+    /**
+     * Enum representing possible values for the baud rate of a {@link gnu.io.SerialPort} connection.
+     */
     public enum BaudRate {
 
         BAUD4800(4800), BAUD9600(9600), BAUD19200(19200), BAUD38400(38400), BAUD57600(57600), BAUD115200(115200), BAUD230400(230400);
@@ -56,6 +70,9 @@ public class SerialPortParams {
         }
     }
 
+    /**
+     * Enum representing possible values for the parity of a {@link gnu.io.SerialPort} connection.
+     */
     public enum Parity {
 
         NONE(0), ODD(1), EVEN(2), MARK(3), SPACE(4);
@@ -72,6 +89,9 @@ public class SerialPortParams {
 
     }
 
+    /**
+     * Enum representing possible values for the stop bits of a {@link gnu.io.SerialPort} connection.
+     */
     public enum StopBits {
 
         ONE(1), ONE_POINT_FIVE(3), TWO(2);
@@ -88,6 +108,9 @@ public class SerialPortParams {
 
     }
 
+    /**
+     * Enum representing possible values for the data bits of a {@link gnu.io.SerialPort} connection.
+     */
     public enum DataBits {
 
         DATA5(5), DATA6(6), DATA7(7), DATA8(8);
