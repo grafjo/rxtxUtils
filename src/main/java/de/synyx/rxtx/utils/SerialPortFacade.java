@@ -72,10 +72,10 @@ public class SerialPortFacade {
 
     private void applySerialPortParams() throws UnsupportedCommOperationException {
         LOG.info("applying serialPort configuration:"
-                +" baud rate: " + this.serialPortParams.getBaudRate()
-                +" data bits: " + this.serialPortParams.getDataBits()
-                +" stop bits: " + this.serialPortParams.getStopBits()
-                +" parity: " + this.serialPortParams.getParity());
+                + " baud rate: " + this.serialPortParams.getBaudRate()
+                + " data bits: " + this.serialPortParams.getDataBits()
+                + " stop bits: " + this.serialPortParams.getStopBits()
+                + " parity: " + this.serialPortParams.getParity());
 
         this.serialPort.setSerialPortParams(
                 this.serialPortParams.getBaudRate(),
@@ -135,5 +135,9 @@ public class SerialPortFacade {
      */
     public OutputStream getOutputStream() throws IOException {
         return this.serialPort.getOutputStream();
+    }
+
+    public String getPortName() {
+        return this.portName;
     }
 }
